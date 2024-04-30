@@ -1,0 +1,191 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #1b1b1b; /* Set the background color to black */
+    font-family: Georgia, serif;
+    color: #fff;
+}
+
+header {
+    background-color: #1b1b1b;
+    color: #fff;
+    padding: 10px 40px; /* Reduced padding for the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo img {
+    width: 250px; /* Adjust the width of the logo */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 150px; /* Add space between navigation links */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Comic Sans MS', cursive; /* Change font family */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Adjusted height to account for smaller header */
+    position: relative;
+    margin-top: -130px; /* Add some margin to bring the container closer to the header */
+}
+
+.statistics {
+    flex: 1; /* Take up remaining space */
+    margin-right: 20px;
+}
+
+.statistics h2 {
+    margin-bottom: 10px;
+}
+
+canvas {
+    margin-right: 20px; /* Add some space between the wheel and the statistics */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    text-align: left;
+}
+
+#spinButton {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 20px; /* Adjust the position to the right of the wheel */
+    transform: translateY(-50%); /* Center vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Comic Sans MS', cursive; /* Change font family */
+    font-size: 16px; /* Optionally, adjust font size */
+}
+
+#spinButton:hover {
+    background-color: #e0e0e0;
+}
+
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1b1b1b;
+    border: 2px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.additional-links a img {
+    width: 20px; /* Set the width of the images */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 30px; /* Add some space between the icons */
+}
+
+.text-container {
+    position: absolute;
+    top: 38%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+}
+
+.text-container h1 {
+    color: #fbdb05;
+    font-size: 35px;
+    font-family: 'Comic Sans MS', cursive;
+    margin-bottom: 10px; /* Add some space below the title */
+}
+
+.text-container h2 {
+    color: #fff;
+    font-size: 15px;
+    font-family: Georgia, serif;
+    margin-top: 0; /* Remove any top margin */
+}
+
+@media screen and (max-width: 768px) {
+    .text-container {
+        position: relative; /* Change to relative positioning on smaller screens */
+        top: auto; /* Reset top position */
+        left: auto; /* Reset left position */
+        transform: none; /* Remove transform */
+        text-align: center; /* Center text on smaller screens */
+    }
+}
+
+.additional-content {
+    margin-top: -150px; /* Add margin-top to create space */
+    display: flex;
+    align-items: center;
+}
+
+.additional-image {
+    flex: 1; /* Take up remaining space */
+    margin-right: 20px; /* Add spacing between image and text */
+}
+
+.additional-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.additional-text {
+    flex: 2;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.additional-text h3 {
+    flex: 2;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    color: #fbdb05;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.section-title {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 10px;
+
+    margin-right: 20px; /* Add spacing between image and title */
+}
+
+.additional-section {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 30px; /* Add margin between sections */
+}
+
