@@ -2,15 +2,10 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const spinButton = document.getElementById('spinButton');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Scroll to additional content when "Roadmap" link is clicked
-    const roadmapLink = document.querySelector('nav ul li:nth-child(2) a');
-    roadmapLink.addEventListener('click', function(event) {
-        event.preventDefault();
-        const additionalContent = document.getElementById('additional-content');
-        additionalContent.scrollIntoView({ behavior: 'smooth' });
-    });
-});
+// Set up a container for the message box within the body
+const messageContainer = document.createElement('div');
+messageContainer.classList.add('message-container');
+document.body.appendChild(messageContainer);
 
 // Define your wheel options and sections
 const options = ['https://spinthecats2.s3.eu-north-1.amazonaws.com/cats/360_F_678341834_RIflXrrwXxViWDjB2u3Cv6aBM35PNd71-removebg-preview.png', 'https://spinthecats2.s3.eu-north-1.amazonaws.com/cats/4d0cbff9ff8fce081ea5d12269c52e51822a4dc1-removebg-preview.png', 'https://spinthecats2.s3.eu-north-1.amazonaws.com/cats/51e1c1e3f6fba151c520655b21e4b9f0-removebg-preview.png', 'https://spinthecats2.s3.eu-north-1.amazonaws.com/cats/51WHgHxF5YL._AC_UF1000_1000_QL80_-removebg-preview.png', 'https://spinthecats2.s3.eu-north-1.amazonaws.com/cats/74f4f548392fbdafbe8a5d9764c83eaf-removebg-preview.png'];
@@ -91,39 +86,55 @@ function spinWheel() {
         // Create a new element to display the winning message
         const messageBox = document.createElement('div');
         messageBox.classList.add('message-box');
-        
+
         // Create an image element for the winning option
         const winningImg = new Image();
         winningImg.src = winningOption;
-        winningImg.onload = function() {
+
+        // Add an event listener to check when the image is loaded
+        winningImg.onload = () => {
             console.log("Image loaded successfully");
+
+            // Append the image to the message box
             messageBox.appendChild(winningImg);
-            
+
             // Add text to the message box
             const text = document.createElement('p');
             text.textContent = "Congratulations mf! Here is your cat, go buy $STC";
             messageBox.appendChild(text);
+
+            // Append the message box to the body
+            document.body.appendChild(messageBox);
+
+            // Remove the message box after 5 seconds
+            setTimeout(() => {
+                messageBox.remove();
+                // Reset the flag to indicate that the wheel has stopped spinning
+                isSpinning = false;
+                // Re-enable the spin button
+                spinButton.disabled = false;
+            }, 5000);
         };
 
-        // Log a message if the image fails to load
-        winningImg.onerror = function() {
+        // Add an event listener to handle image loading errors
+        winningImg.onerror = () => {
             console.error("Failed to load image");
+
+            // If the image fails to load, still append the message box without the image
+            document.body.appendChild(messageBox);
+
+            // Remove the message box after 5 seconds
+            setTimeout(() => {
+                messageBox.remove();
+                // Reset the flag to indicate that the wheel has stopped spinning
+                isSpinning = false;
+                // Re-enable the spin button
+                spinButton.disabled = false;
+            }, 5000);
         };
-
-        // Append the message box to the body
-        document.body.appendChild(messageBox);
-
-        // Remove the message box after 5 seconds
-        setTimeout(() => {
-            messageBox.remove();
-            // Reset the flag to indicate that the wheel has stopped spinning
-            isSpinning = false;
-            // Re-enable the spin button
-            spinButton.disabled = false;
-        }, 5000);
     }, { once: true }); // Ensure the event listener only fires once
 }
 
+
 // Event listener for the spin button
 spinButton.addEventListener('click', spinWheel);
-
