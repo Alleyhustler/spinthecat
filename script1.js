@@ -106,17 +106,13 @@ function spinWheel() {
         winningImg.onerror = () => {
             console.error("Failed to load image");
 
-            // If the image fails to load, still append the message box without the image
-            document.body.appendChild(messageBox);
+            // Remove the message box if it exists
+            if (messageBox.parentNode) {
+                messageBox.parentNode.removeChild(messageBox);
+            }
 
-            // Remove the message box after 5 seconds
-            setTimeout(() => {
-                messageBox.remove();
-                // Reset the flag to indicate that the wheel has stopped spinning
-                isSpinning = false;
-                // Re-enable the spin button
-                spinButton.disabled = false;
-            }, 5000);
+            // Re-spin the wheel
+            spinWheel();
         };
     }, { once: true }); // Ensure the event listener only fires once
 }
