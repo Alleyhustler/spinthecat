@@ -86,7 +86,7 @@ function spinWheel() {
 
             // Add text to the message box
             const text = document.createElement('p');
-            text.textContent = "Congratulations mf! Here is your cat, go buy $Spinthecat";
+            text.textContent = "Congratulations mf! Here is your cat, go buy $WheelCat";
             messageBox.appendChild(text);
 
             // Append the message box to the body
